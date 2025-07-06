@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.splash-container {
+  background-color: #fdf400; /* bright yellow */
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.circle {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background-color: black;
+  border-radius: 50%;
+}
+
+.top-right {
+  top: -200px;
+  right: -200px;
+}
+
+.bottom-left {
+  width: 600px;
+  height: 600px;
+  bottom: -300px;
+  left: -300px;
+}
+
+
+.text-content {
+    font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+  color: black;
+  z-index: 1;
+}
+
+.text-content h1 {
+  font-size: 4rem;
+
+  font-weight: bold;
+  margin: 0;
+}
+
+.text-content p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="splash-container">
+    <div class="circle top-right"></div>
+    <div class="circle bottom-left"></div>
+    <div class="text-content">
+      <h1>SemaAi</h1>
+      <p>Sema AI — Weh, Inakusort!</p>
+    </div>
+  </div>
+</body>
+</html>
