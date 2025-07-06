@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SemaAI SignIn</title>
+<style>
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: #fdf400; /* fallback yellow */
+}
+
+/* Container */
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top Section */
+.top-section {
+  background-color: #fdf400;
+  color: black;
+  text-align: center;
+  padding: 40px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.top-section h1 {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+}
+
+.slogan {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+/* Bottom Section */
+.bottom-section {
+  background-color: #000;
+  color: white;
+  padding: 40px 20px;
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+/* Input Section */
+.input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 0 auto 40px;
+  width: 100%;
+  max-width: 350px;
+}
+
+.input-section input {
+  padding: 16px 20px;
+  font-size: 1.1rem;
+  border: 2px solid yellow;
+  border-radius: 30px;
+  background-color: #111;
+  color: white;
+  outline: none;
+  width: 100%;
+}
+
+/* Button & Forgot Password */
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn {
+  padding: 16px;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  background-color: yellow;
+  color: black;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: 100%;
+  max-width: 350px;
+}
+
+.btn:hover {
+  background-color: #ffe600;
+}
+
+.forgot-password {
+  font-size: 0.9rem;
+}
+
+.forgot-password a {
+  color: yellow;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  .top-section h1 {
+    font-size: 2.5rem;
+  }
+
+  .slogan {
+    font-size: 1.2rem;
+  }
+
+  .input-section input,
+  .btn {
+    font-size: 1rem;
+    padding: 14px 16px;
+  }
+
+  .bottom-section {
+    padding: 30px 15px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="top-section">
+      <h1>Sign In</h1>
+      <p class="slogan">Say&nbsp;It,&nbsp;Aisha&nbsp;Atasort</p>
+    </section>
+
+    <section class="bottom-section">
+      <div class="input-section">
+        <input type="text" placeholder="Username" />
+        <input type="password" placeholder="Password" />
+        <button class="btn">Sign In</button>
+         <p class="forgot-password"><a href="#">Forgot Password?</a></p>
+      </div>
+     <div class="button-container">
+  
+  <button class="btn" style="background-color: white;">Continue Using Google</button>
+</div>
+
+    </section>
+  </div>
+</body>
+</html>
