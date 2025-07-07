@@ -4,81 +4,240 @@
   <meta charset="UTF-8">
   <title>Font Awesome Menu</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <style>
-    body {
-  font-family: Arial, sans-serif;
+   /* Reset basics */
+body {
   margin: 0;
+  font-family: Arial, sans-serif;
+  background: #000; /* optional: black background for full page */
 }
 
-header {
-  position: relative;
-  background-color: #222;
-  color: white;
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.menu-icon {
+/* Menu icon styling */
+#menu-icon {
+  padding: 20px;
   cursor: pointer;
-  font-size: 24px;
+  background: #000; /* black background */
+  color: yellow; /* icon color */
+  font-size: 40px;
+  position: relative;
+  z-index: 1000;
 }
 
+#menu-icon i {
+  color: yellow; /* specifically the FA icon */
+}
+
+/* Nav menu styles */
 .nav-menu {
   display: none;
   position: absolute;
   top: 60px;
-  right: 20px;
-  background-color: #333;
+  left: 20px; /* change to right: 20px if you want it on the right side */
+  background: #000;
   padding: 15px;
-  border-radius: 8px;
-  z-index: 99;
+  border-radius: 6px;
+  z-index: 999;
+  min-width: 150px;
 }
 
 .nav-menu ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
-.nav-menu ul li {
+.nav-menu li {
   margin: 10px 0;
 }
 
-.nav-menu ul li a {
-  color: white;
+.nav-menu li a {
+  color: yellow;
   text-decoration: none;
   font-size: 16px;
+  transition: color 0.3s;
+  font-size: bold;
 }
 
-/* Optional: toggle class */
+.nav-menu li a:hover {
+  color: white;
+}
+
+/* Show class toggle */
 .nav-menu.show {
   display: block;
 }
+.sidebar {
+  position: fixed;
+   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  top: 10%; 
+  bottom: 10%;                    /* Start at the top */
+  right: 5%;                    /* Stick to the left */       
+  width: 70px;                /* Sidebar width */
+  background-color: yellow;   /* Yellow background */
+  border-radius: 0;           /* Remove pill if you want full edge-to-edge */
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+ border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+
+
+}
+
+
+/* Sidebar Item (just icon buttons) */
+.sidebar-item {
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black; /* black icons */
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.sidebar-item:hover {
+  background: rgba(0, 0, 0, 0.1);
+  transform: scale(1.1);
+}
+
+.sidebar-item.active {
+  background: black;
+  color: yellow;
+}
+.chat-input-wrapper {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+  z-index: 1000;
+}
+
+.chat-input-box {
+  background: #2f2f3070;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  padding: 50px 45px;
+  border-radius: 24px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+  gap: 10px;
+  border: 1px solid #ddd;
+}
+
+.chat-input-box input[type="text"] {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  outline: none;
+  padding: 8px 0;
+  color: white;
+}
+
+.chat-icon,
+.send-button {
+  background: none;
+  border: none;
+  color: #555;
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.2s;
+  bottom: 0;
+}
+
+.chat-icon:hover,
+.send-button:hover {
+  color: #000;
+}
+.chat-input-box textarea {
+  flex: 1;
+  resize: none;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  outline: none;
+  padding: 8px 0;
+  line-height: 1.4;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
 
 </style>
   <header>
     
 
     <!-- Menu icon -->
-    <div class="menu-icon" id="menu-icon">
-      <i class="fas fa-bars"></i>
-    </div>
+   <!-- Menu Icon -->
+<div id="menu-icon">
+  <i class="fas fa-bars"></i>
+</div>
 
-    <!-- Hidden Menu -->
-    <nav class="nav-menu" id="nav-menu">
-      <ul>
-        <li><a href="#">🏠 Home</a></li>
-        <li><a href="#">📄 About</a></li>
-        <li><a href="#">📞 Contact</a></li>
-        <li><a href="#">🔐 Login</a></li>
-      </ul>
-    </nav>
+<!-- Menu Items -->
+<nav id="nav-menu" class="nav-menu">
+  <ul>
+    <ul class="sema-menu">
+  <li><a href="#">🎙️ Voice Job Search</a></li>
+  <li><a href="#">📄 CV Builder (Voice)</a></li>
+  <li><a href="#">🤖 Blue-Collar Agent</a></li>
+  <li><a href="#">📢 Hustle Board</a></li>
+  <li><a href="#">🧱 Job Category Guide</a></li>
+  <li><a href="#">🗣️ Resume Review (Voice)</a></li>
+  <li><a href="#">🔎 Real-Time Job Match</a></li>
+  <li><a href="#">🌍 Jobs Near Me</a></li>
+  <li><a href="#">💰 M-Pesa Payments</a></li>
+  <li><a href="#">🧭 Dora Voice Mode</a></li>
+</ul>
+
+  </ul>
+</nav>
+
   </header>
+  <div class="sidebar">
+  <div class="sidebar-item active"><i class="fas fa-home"></i></div>
+  <div class="sidebar-item"><i class="fas fa-comments"></i></div>
+  <div class="sidebar-item"><i class="fas fa-microphone"></i></div>
+  <div class="sidebar-item"><i class="fas fa-cog"></i></div>
+  <div class="sidebar-item"><i class="fas fa-sign-out-alt"></i></div>
+</div>
+<div class="chat-input-wrapper">
+  <div class="chat-input-box">
+    <label for="file-upload" class="chat-icon">
+      <i class="fas fa-paperclip"></i>
+    </label>
+    <input type="file" id="file-upload" style="display: none;" />
 
-  <script src="script.js"></script>
+    <textarea placeholder="Type your message..." rows="1"></textarea>
+
+    <button class="send-button">
+      <i class="fas fa-paper-plane"></i>
+    </button>
+  </div>
+</div>
+
+
+  <script src="index.js"></script>
 </body>
 </html>
