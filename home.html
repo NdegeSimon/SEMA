@@ -184,6 +184,41 @@ body {
   overflow-y: auto;
   color: white;
 }
+.mic-container {
+  position: relative;
+  text-align: center;
+  margin-top: 20%;
+  
+}
+
+#mic-icon {
+  font-size: 64px;
+  color: yellow;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  justify-items: center;
+}
+
+/* Listening animation */
+.listening {
+  animation: pulse 1s infinite;
+  color: #ffcc00;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 
 
 </style>
@@ -220,9 +255,13 @@ body {
   <div class="sidebar-item active"><i class="fas fa-home"></i></div>
   <div class="sidebar-item"><i class="fas fa-comments"></i></div>
   <div class="sidebar-item"><i class="fas fa-microphone"></i></div>
-  <div class="sidebar-item"><i class="fas fa-cog"></i></div>
-  <div class="sidebar-item"><i class="fas fa-sign-out-alt"></i></div>
+  <div class="sidebar-item"><i class="fas fa-phone-volume"></i></div>
+  <div class="sidebar-item"><i class="fas fa-user"></i></div>
 </div>
+<div class="mic-container">
+  <i id="mic-icon" class="fas fa-microphone"></i>
+</div>
+
 <div class="chat-input-wrapper">
   <div class="chat-input-box">
     <label for="file-upload" class="chat-icon">
