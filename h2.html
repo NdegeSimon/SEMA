@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Font Awesome Menu</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+   /* Reset basics */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #000; /* optional: black background for full page */
+}
+
+/* Menu icon styling */
+#menu-icon {
+  padding: 20px;
+  cursor: pointer;
+  background: #000; /* black background */
+  color: yellow; /* icon color */
+  font-size: 40px;
+  position: relative;
+ 
+}
+
+#menu-icon i {
+  color: yellow; /* specifically the FA icon */
+}
+
+/* Nav menu styles */
+.nav-menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: 20px; /* change to right: 20px if you want it on the right side */
+  background: #000;
+  padding: 15px;
+  border-radius: 6px;
+  z-index: 999;
+  min-width: 150px;
+}
+
+.nav-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-menu li {
+  margin: 10px 0;
+}
+
+.nav-menu li a {
+  color: yellow;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s;
+  font-weight: bold;
+}
+
+.nav-menu li a:hover {
+  color: white;
+}
+
+/* Show class toggle */
+.nav-menu.show {
+  display: block;
+}
+.sidebar {
+  position: fixed;
+   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  top: 10%; 
+  bottom: 10%;                    /* Start at the top */
+  right: 5%;                    /* Stick to the left */       
+  width: 70px;                /* Sidebar width */
+  background-color: yellow;   /* Yellow background */
+  border-radius: 0;           /* Remove pill if you want full edge-to-edge */
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+ border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+
+
+/* Sidebar Item (just icon buttons) */
+.sidebar-item {
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black; /* black icons */
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.sidebar-item:hover {
+  background: rgba(0, 0, 0, 0.1);
+  transform: scale(1.1);
+}
+
+.sidebar-item.active {
+  background: black;
+  color: yellow;
+}
+
+/* Chat input area - initially hidden */
+.chat-input-wrapper {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: none; /* Changed from flex to none */
+  justify-content: center;
+  padding: 0 20px;
+  z-index: 1000;
+  animation: slideUp 0.3s ease;
+}
+
+.chat-input-wrapper.active {
+  display: flex;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.chat-input-box {
+  background: #2f2f3070;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  padding: 15px 20px; /* Reduced padding */
+  border-radius: 24px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+  gap: 10px;
+  border: 1px solid yellow;
+}
+
+.chat-input-box input[type="text"] {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  outline: none;
+  padding: 8px 0;
+  color: white;
+}
+
+.chat-icon,
+.send-button {
+  background: none;
+  border: none;
+  color: yellow;
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.chat-icon:hover,
+.send-button:hover {
+  color: #000;
+}
+
+.chat-input-box textarea {
+  flex: 1;
+  resize: none;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  outline: none;
+  padding: 8px 0;
+  line-height: 1.4;
+  max-height: 80px;
+  overflow-y: auto;
+  color: white;
+}
+
+.mic-container {
+  position: relative;
+  text-align: center;
+  margin-bottom: 200px;
+}
+
+#mic-icon {
+  font-size: 64px;
+  color: yellow;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  justify-items: center;
+}
+
+/* Listening animation */
+.listening {
+  animation: pulse 1s infinite;
+  color: #ffcc00;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Chat toggle indicator */
+.sidebar-item.chat-active {
+  background: black;
+  color: yellow;
+}
+  </style>
+</head>
+<body>
+  <header>
+    <!-- Menu Icon -->
+    <div id="menu-icon">
+      <i class="fas fa-bars"></i>
+    </div>
+
+    <!-- Menu Items -->
+    <nav id="nav-menu" class="nav-menu">
+      <ul>
+        <ul class="sema-menu">
+          <li><a href="#">🎙️ Voice Job Search</a></li>
+          <li><a href="#">📄 CV Builder (Voice)</a></li>
+          <li><a href="#">🤖 Blue-Collar Agent</a></li>
+          <li><a href="#">📢 Hustle Board</a></li>
+          <li><a href="#">🧱 Job Category Guide</a></li>
+          <li><a href="#">🗣️ Resume Review (Voice)</a></li>
+          <li><a href="#">🔎 Real-Time Job Match</a></li>
+          <li><a href="#">🌍 Jobs Near Me</a></li>
+          <li><a href="#">💰 M-Pesa Payments</a></li>
+          <li><a href="#">🧭 Dora Voice Mode</a></li>
+        </ul>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="sidebar">
+    <div class="sidebar-item active"><i class="fas fa-home"></i></div>
+    <div class="sidebar-item" id="chatToggle"><i class="fas fa-comments"></i></div>
+    <div class="sidebar-item"><i class="fas fa-microphone"></i></div>
+    <div class="sidebar-item"><i class="fas fa-phone-volume"></i></div>
+    <div class="sidebar-item"><i class="fas fa-user"></i></div>
+  </div>
+
+  <div class="mic-container">
+    <img src="logo2.png" id="mic-icon" />
+  </div>
+
+  <div class="chat-input-wrapper" id="chatInputWrapper">
+    <div class="chat-input-box">
+      <label for="file-upload" class="chat-icon">
+        <i class="fas fa-paperclip"></i>
+      </label>
+      <input type="file" id="file-upload" style="display: none;" />
+
+      <textarea placeholder="Type your message..." rows="1" id="chatTextarea"></textarea>
+
+      <button class="send-button">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Toggle menu
+    document.getElementById('menu-icon').addEventListener('click', function() {
+      document.getElementById('nav-menu').classList.toggle('show');
+    });
+
+    // Chat toggle functionality
+    const chatToggle = document.getElementById('chatToggle');
+    const chatInputWrapper = document.getElementById('chatInputWrapper');
+    const chatTextarea = document.getElementById('chatTextarea');
+
+    chatToggle.addEventListener('click', function() {
+      // Toggle chat input visibility
+      chatInputWrapper.classList.toggle('active');
+      
+      // Toggle active state on chat icon
+      this.classList.toggle('chat-active');
+      
+      // Focus textarea when shown
+      if (chatInputWrapper.classList.contains('active')) {
+        setTimeout(() => {
+          chatTextarea.focus();
+        }, 300);
+      }
+    });
+
+    // Close chat when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.chat-input-wrapper') && 
+          !e.target.closest('#chatToggle') &&
+          chatInputWrapper.classList.contains('active')) {
+        chatInputWrapper.classList.remove('active');
+        chatToggle.classList.remove('chat-active');
+      }
+    });
+
+    // Mic animation
+    const micIcon = document.getElementById('mic-icon');
+    micIcon.addEventListener('click', function() {
+      this.classList.toggle('listening');
+    });
+  </script>
+</body>
+</html>
